@@ -1,18 +1,15 @@
 const express = require("express");
-
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
 const port = 3000;
+const swaggerUi = require('swagger-ui-express');
+const openApiDocumentation = require('./openAPI');
+
 var books = [
   { id: 123, title: "A Tale of Two Cities", author: "Charles Dickens" },
 ];
 
-
-
-const swaggerUi = require('swagger-ui-express');
-const openApiDocumentation = require('./openAPI');
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openApiDocumentation));
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
